@@ -27,6 +27,7 @@ public class GreedTeam implements PlayerTeam{
         this.robotsAwaitingCommand = theTeam; 
         //all of our robots are awaiting commands
         //this needs to be made
+        //hey there
         Location location1 = information.get(0);
         Location location2 = information.get(1);
         Location location3 = information.get(2);
