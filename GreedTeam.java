@@ -41,21 +41,21 @@ public class GreedTeam implements PlayerTeam{
         if (!location2.getCoins().isEmpty()){
             CommandCoin command2 = new CommandCoin(robotsAwaitingCommand.get(1));
         } else {
-            DirType dir2 = location2.getDirections.get(1);
+            DirType dir2 = location2.getDirections.get(0);
             CommandMove(robotsAwaitingCommand.get(1), dir2);
         }
 
         if (!location3.getCoins().isEmpty()){
             CommandCoin command3 = new CommandCoin(robotsAwaitingCommand.get(2));
         } else {
-            DirType dir3 = location3.getDirections.get(2);
+            DirType dir3 = location3.getDirections.get(0);
             CommandMove(robotsAwaitingCommand.get(2), dir3);
         }
 
         if (!location4.getCoins().isEmpty()){
             CommandCoin command4 = new CommandCoin(robotsAwaitingCommand.get(3));
         } else {
-            DirType dir4 = location4.getDirections.get(3);
+            DirType dir4 = location4.getDirections.get(0);
             CommandMove(robotsAwaitingCommand.get(3), dir4);
         }
 
