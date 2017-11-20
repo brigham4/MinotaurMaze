@@ -1,18 +1,18 @@
 import java.util.Random;
 
-public class CoreBot implements Robot{
+public class WolfBot implements Robot{
     GreedTeam myTeam = new GreedTeam();
     public ModelType getModel(){
-        //this sets the type of CoreBot to be CoreBot (seems redundant?)
-        ModelType core = new ModelType();
-        core = ModelType.CoreBot;
-        return core;
+        //this sets the type of WolfBot to be WolfBot
+        ModelType wolf = new ModelType();
+        wolf = ModelType.WolfBot;
+        return wolf;
     }
     public int getID(){
         //Here I will set the ID number to be a random number. I am doing this because I 
         //want to minimize the chances of it being the same ID number that another team gave
         Random rand = new Random();
-        int  n = rand.nextInt(1000);
+        int  n = rand.nextInt(2000);
         return n;
     }
     public boolean isTeamOne(){

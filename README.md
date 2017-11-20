@@ -3,7 +3,7 @@ Project repository for Minotaur Maze Game.
 
 Eric Brigham </br>
 Rain Kwan </br>
-Genevieve Napper </br>
+Genevieve Liberte </br>
 Emma Schwarz </br>
 
 __Draft Design and Initial Tasks__ </br>
