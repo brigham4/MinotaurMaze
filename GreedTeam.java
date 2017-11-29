@@ -123,8 +123,8 @@ public class GreedTeam implements PlayerTeam{
         }
         */
         
+
         //This is the movement template from Lepinski's TestTeam.java file
-        
         List<Command> cmds = new ArrayList<Command>();
         for(Robot r: robotsAwaitingCommand){
             Random rand = new Random();
@@ -133,6 +133,7 @@ public class GreedTeam implements PlayerTeam{
             Location robotLocation = roboLocation(information, r);
 
             if(CoinPickUp(robotLocation, r) == true){
+                //if the robot can pick up the coin, pick it up. Else, move somewhere else.
                 cmds.add(new CommandCoin(r));
             }
             else{
