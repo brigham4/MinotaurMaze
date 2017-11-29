@@ -4,8 +4,7 @@ public class SkunkBot implements Robot{
     GreedTeam myTeam = new GreedTeam();
     public ModelType getModel(){
         //this sets the type of RabbitBot to be RabbitBot
-        ModelType skunk = new ModelType();
-        skunk = ModelType.SkunkBot;
+        ModelType skunk = ModelType.SkunkBot;
         return skunk;
     }
     public int getID(){

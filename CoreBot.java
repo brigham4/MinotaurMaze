@@ -4,8 +4,7 @@ public class CoreBot implements Robot{
     GreedTeam myTeam = new GreedTeam();
     public ModelType getModel(){
         //this sets the type of CoreBot to be CoreBot (seems redundant?)
-        ModelType core = new ModelType();
-        core = ModelType.CoreBot;
+        ModelType core = ModelType.CoreBot;
         return core;
     }
     public int getID(){

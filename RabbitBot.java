@@ -4,8 +4,7 @@ public class RabbitBot implements Robot{
     GreedTeam myTeam = new GreedTeam();
     public ModelType getModel(){
         //this sets the type of RabbitBot to be RabbitBot
-        ModelType rabbit = new ModelType();
-        rabbit = ModelType.RabbitBot;
+        ModelType rabbit = ModelType.RabbitBot;
         return rabbit;
     }
     public int getID(){

@@ -4,9 +4,9 @@ import java.util.List;
 //This function should return the robots the player wants to use during the game
 
 //requestCommands is called each turn
-//This function should return one Command for each robot awaiting command
+//This functino should return one Command for each robot awaiting command
 
 public interface PlayerTeam{
-    public List<Robot> chooseTeam(boolean teamOne, GameState state);
+    public List<? extends Robot> chooseTeam(boolean teamOne, GameState state);
     public List<Command> requestCommands(List<Location> information, List<Robot> robotsAwaitingCommand, GameState state);
 }
