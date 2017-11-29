@@ -18,23 +18,4 @@ public class WolfBot implements Robot{
         //need to pull our boolean the GreedTeam class
         return myTeam.isTeamOne;
     }
-    /*public DirType Move(){
-        Random randmove = new Random();
-        int k = randmove.nextInt(4);
-        DirType dir = null;
-        if(k == 0){
-            dir = DirType.North;
-        }
-        if(k == 1){
-            dir = DirType.East;
-        }
-        if(k == 2){
-            dir = DirType.South;
-        }
-        if(k == 3){
-            dir = DirType.West;
-        }
-        return dir;
-    }
-    */
 }
