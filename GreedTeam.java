@@ -136,8 +136,7 @@ public class GreedTeam implements PlayerTeam{
                 //if the robot can pick up the coin, pick it up. Else, move somewhere else.
                 cmds.add(new CommandCoin(r));
             }
-            else{
-
+            /*else{
                 //this will tell robots to move randomly
                 switch(num){
                 case 0: dir = DirType.North;
@@ -151,7 +150,62 @@ public class GreedTeam implements PlayerTeam{
                 }
                 cmds.add(new CommandMove(r, dir));
             }
-        }
+            */
+            if(state.turns_remaining > 9){
+                //we will scatter in the beginnning because it is hard to implement 
+                //deterministic rules in  the beginning
+                switch(num){
+                    case 0: dir = DirType.North;
+                    break;
+                    case 1: dir = DirType.South;
+                    break;
+                    case 2: dir = DirType.East;
+                    break;
+                    case 3: dir = DirType.West;
+                    break;
+                    }
+                    cmds.add(new CommandMove(r, dir));
+            }
+            else{
+                for(Robot r1: robotsAwaitingCommand){
+                        int x_diff = (roboLocation(information, r).getX() - roboLocation(information, r1).getX());
+                        int y_diff = (roboLocation(information, r).getY() - roboLocation(information, r1).getY());
+                        if( -2 <= x_diff  || x_diff <= 2) {
+                            if(r.getID() == r1.getID()){
+                            }
+                            else if(x_diff < 0){
+                                dir = DirType.West;
+                            }
+                            else{
+                                dir = DirType.East;
+                            }
+                        }
+                        if( -2 <= y_diff  || y_diff <= 2) {
+                            if(r.getID() == r1.getID()){
+                            }
+                            else if(y_diff < 0){
+                                dir = DirType.North;
+                            }
+                            else{
+                                dir = DirType.South;
+                            }
+                        }
+                        else{
+                            switch(num){
+                                case 0: dir = DirType.North;
+                                break;
+                                case 1: dir = DirType.South;
+                                break;
+                                case 2: dir = DirType.East;
+                                break;
+                                case 3: dir = DirType.West;
+                                break;
+                                }
+                        }
+                    }
+
+                }
+            }
         return cmds;
     }
 }
