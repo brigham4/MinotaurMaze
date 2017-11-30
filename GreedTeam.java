@@ -175,9 +175,11 @@ public class GreedTeam implements PlayerTeam{
                             }
                             else if(x_diff < 0){
                                 dir = DirType.West;
+                                //System.out.println("I moved in a special way: West");
                             }
                             else{
                                 dir = DirType.East;
+                                //System.out.println("I moved in a special way: East");
                             }
                         }
                         if( -2 <= y_diff  || y_diff <= 2) {
@@ -185,9 +187,11 @@ public class GreedTeam implements PlayerTeam{
                             }
                             else if(y_diff < 0){
                                 dir = DirType.North;
+                                //System.out.println("I moved in a special way: North");
                             }
                             else{
                                 dir = DirType.South;
+                                //System.out.println("I moved in a special way: South");
                             }
                         }
                         else{
