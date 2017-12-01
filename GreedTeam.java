@@ -81,50 +81,7 @@ public class GreedTeam implements PlayerTeam{
     }
 
     public List<Command> requestCommands(List<Location> information, List<Robot> robotsAwaitingCommand, GameState state){
-        /*this.robotsAwaitingCommand = theTeam; 
-        Location location1 = information.get(0);
-        Location location2 = information.get(1);
-        Location location3 = information.get(2);
-        Location location4 = information.get(3);
-        */
-
-        //information.get() is returning a random location that the team can see.
-        //information is filled with locations that are scanned by the team so getting the
-        //first four things gets us locations that some bots cannot even move to
-        //this does not give us the location of a robot
-
-        //commenting this out
-        /*if (!location1.getCoins().isEmpty()){
-            CommandCoin command1 = new CommandCoin(robotsAwaitingCommand.get(0));
-        } else {
-            DirType dir1 = location1.getDirections.get(0);
-            CommandMove(robotsAwaitingCommand.get(0), dir1);
-        }
-
-        if (!location2.getCoins().isEmpty()){
-            CommandCoin command2 = new CommandCoin(robotsAwaitingCommand.get(1));
-        } else {
-            DirType dir2 = location2.getDirections.get(0);
-            CommandMove(robotsAwaitingCommand.get(1), dir2);
-        }
-
-        if (!location3.getCoins().isEmpty()){
-            CommandCoin command3 = new CommandCoin(robotsAwaitingCommand.get(2));
-        } else {
-            DirType dir3 = location3.getDirections.get(0);
-            CommandMove(robotsAwaitingCommand.get(2), dir3);
-        }
-
-        if (!location4.getCoins().isEmpty()){
-            CommandCoin command4 = new CommandCoin(robotsAwaitingCommand.get(3));
-        } else {
-            DirType dir4 = location4.getDirections.get(0);
-            CommandMove(robotsAwaitingCommand.get(3), dir4);
-        }
-        */
-        
-
-        //This is the movement template from Lepinski's TestTeam.java file
+        //This is the movement template from Professor Lepinski's TestTeam.java file
         List<Command> cmds = new ArrayList<Command>();
         for(Robot r: robotsAwaitingCommand){
             Random rand = new Random();
@@ -136,22 +93,7 @@ public class GreedTeam implements PlayerTeam{
                 //if the robot can pick up the coin, pick it up. Else, move somewhere else.
                 cmds.add(new CommandCoin(r));
             }
-            /*else{
-                //this will tell robots to move randomly
-                switch(num){
-                case 0: dir = DirType.North;
-                break;
-                case 1: dir = DirType.South;
-                break;
-                case 2: dir = DirType.East;
-                break;
-                case 3: dir = DirType.West;
-                break;
-                }
-                cmds.add(new CommandMove(r, dir));
-            }
-            */
-            if(state.turns_remaining > 9){
+            if(state.turns_remaining > 30){
                 //we will scatter in the beginnning because it is hard to implement 
                 //deterministic rules in  the beginning
                 switch(num){
@@ -168,14 +110,58 @@ public class GreedTeam implements PlayerTeam{
             }
             else{
                 for(Robot r1: robotsAwaitingCommand){
+                    //once we are done scattering, we now want to move in a deterministic way
                         int x_diff = (roboLocation(information, r).getX() - roboLocation(information, r1).getX());
                         int y_diff = (roboLocation(information, r).getY() - roboLocation(information, r1).getY());
                         if( -2 <= x_diff  || x_diff <= 2) {
+                            //I am too close to a team member in X
+                            if(r.getID() == r1.getID()){
+                            }
+                            if( -2 <= y_diff  || y_diff <= 2) {
+                                //I am also too close to a team member in Y
+                                //I have to be too close in both directions for there to be a problem
+                                if(r.getID() == r1.getID()){
+                                }
+                                //If We have reached this point, we are both too close in X and 
+                                //too close in Y, we must go away from our other bot.
+                                else if(x_diff < 0 || y_diff < 0){
+                                    System.out.println("I Moved in an X Way");
+                                    //We should move west or North
+                                    switch(num){
+                                        case 0: dir = DirType.North;
+                                        break;
+                                        case 1: dir = DirType.North;
+                                        break;
+                                        case 2: dir = DirType.West;
+                                        break;
+                                        case 3: dir = DirType.West;
+                                        break;
+                                        }
+                                    }
+                                else{
+                                    System.out.println("I Moved in an Y Way");
+                                    switch(num){
+                                        case 0: dir = DirType.South;
+                                        break;
+                                        case 1: dir = DirType.South;
+                                        break;
+                                        case 2: dir = DirType.East;
+                                        break;
+                                        case 3: dir = DirType.East;
+                                        break;
+                                        }
+                                    }
+                                }
+                        }
+
+                        
+                        /*if( -2 <= x_diff  || x_diff <= 2) {
+                            //I am too close to a team member in X
                             if(r.getID() == r1.getID()){
                             }
                             else if(x_diff < 0){
                                 dir = DirType.West;
-                                //System.out.println("I moved in a special way: West");
+                                System.out.println("I moved in a special way: West");
                             }
                             else{
                                 dir = DirType.East;
@@ -183,6 +169,7 @@ public class GreedTeam implements PlayerTeam{
                             }
                         }
                         if( -2 <= y_diff  || y_diff <= 2) {
+                            //I am too close to a team member in Y
                             if(r.getID() == r1.getID()){
                             }
                             else if(y_diff < 0){
@@ -194,8 +181,10 @@ public class GreedTeam implements PlayerTeam{
                                 //System.out.println("I moved in a special way: South");
                             }
                         }
+                        */
                         else{
                             switch(num){
+                                //If the bot does not have a problem in X or Y then it should just move randomly
                                 case 0: dir = DirType.North;
                                 break;
                                 case 1: dir = DirType.South;
@@ -207,8 +196,10 @@ public class GreedTeam implements PlayerTeam{
                                 }
                         }
                     }
-
+                    
+                    cmds.add(new CommandMove(r, dir));
                 }
+
             }
         return cmds;
     }
