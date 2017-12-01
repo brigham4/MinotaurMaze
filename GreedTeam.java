@@ -155,7 +155,8 @@ public class GreedTeam implements PlayerTeam{
                         }
                         
 
-                        
+                        //This movement actually probably isnt the best, it would move them if they had a problem
+                        //in X but not a problem in Y so it would move robots that didn't actually have problems.
                         /*if( -2 <= x_diff  || x_diff <= 2) {
                             //I am too close to a team member in X
                             if(r.getID() == r1.getID()){
@@ -202,6 +203,7 @@ public class GreedTeam implements PlayerTeam{
                 }
 
             }
+
         return cmds;
     }
 }
