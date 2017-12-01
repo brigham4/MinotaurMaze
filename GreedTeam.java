@@ -92,7 +92,7 @@ public class GreedTeam implements PlayerTeam{
             if(CoinPickUp(robotLocation, r) == true){
                 //if the robot can pick up the coin, pick it up. Else, move somewhere else.
                 cmds.add(new CommandCoin(r));
-            }
+            }   
             if(state.turns_remaining > 30){
                 //we will scatter in the beginnning because it is hard to implement 
                 //deterministic rules in  the beginning
@@ -125,7 +125,7 @@ public class GreedTeam implements PlayerTeam{
                                 //If We have reached this point, we are both too close in X and 
                                 //too close in Y, we must go away from our other bot.
                                 else if(x_diff < 0 || y_diff < 0){
-                                    System.out.println("I Moved in an X Way");
+                                    //System.out.println("I Moved in an X Way");
                                     //We should move west or North
                                     switch(num){
                                         case 0: dir = DirType.North;
@@ -139,7 +139,7 @@ public class GreedTeam implements PlayerTeam{
                                         }
                                     }
                                 else{
-                                    System.out.println("I Moved in an Y Way");
+                                    //System.out.println("I Moved in an Y Way");
                                     switch(num){
                                         case 0: dir = DirType.South;
                                         break;
@@ -153,6 +153,7 @@ public class GreedTeam implements PlayerTeam{
                                     }
                                 }
                         }
+                        
 
                         
                         /*if( -2 <= x_diff  || x_diff <= 2) {
